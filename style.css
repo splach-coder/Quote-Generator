@@ -1,0 +1,93 @@
+body{
+    background-image: url(background-img2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    font-family:'Caveat', arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+#container{
+    margin: 5rem;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    padding: 5px 12px;
+    width: 30rem;
+    backdrop-filter: blur(10px);
+    transition: transform 400ms ease, background-color 0.7s cubic-bezier(.4,2,.6,1);
+}
+#container:hover{
+    transform: scale(1.03);
+}
+
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+.animate-bg {
+  animation: pop 1s;
+}
+h1{
+    color: hsla(300, 100%, 25%, 0.5);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+p{
+    color: hsl(0, 0%, 0%);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+button {
+    background-color: hsla(300, 100%, 25%, 1);
+    color: hsl(0, 0%, 0%);
+    font-weight: bold;
+    font-family:'Caveat', arial, sans-serif;
+    font-size: large;
+    width: 10rem;
+    border: none;
+    padding: 10px 10px;
+    margin-bottom: 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+}
+button:hover{
+    background-color: hsla(300, 100%, 25%, 0.5);
+}
+button:active{
+    background-color: hsla(300, 100%, 25%, 0.8);
+}
+#tweetBtn {
+  display: none;
+}
+.btnContainer {
+    display: flex;
+    gap: 5rem;                 
+    margin-top: 1.5rem; 
+}
+.loader {
+  border: 6px solid hsl(0, 0%, 95%);
+  border-top: 6px solid hsla(300, 100%, 25%, 1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
