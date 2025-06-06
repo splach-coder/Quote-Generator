@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
+        <div class="share-bar">
+            <button class="like-btn" title="Like">&#10084;</button>
+            <div class="share-icons">
+                <a href="#" id="share-facebook" title="Share on Facebook" target="_blank">
+                    <img src="images/facebook-icon.png" alt="Facebook" />
+                </a>
+                <a href="#" id="share-instagram" title="Share on Instagram" target="_blank">
+                    <img src="images/instagram-icon.png" alt="Instagram" />
+                </a>
+                
+            </div>
+        </div>
         <h1 id="quote-title">Quote of the day</h1>
         <div id="quote-container">
             <div id="spinner" style="display:none;">
             <div class="loader"></div>
             </div>
             <p id="quote"></p>
-            <p id="author"></p>
+            <div class="author-section">
+                <img id="author-avatar" src="images/avatar-placeholder.png" alt="Author avatar">
+                <p id="author"></p>
+            </div>
         </div>
         <div class="btnContainer">
             <button id="quoteButton">New Quote</button>
