@@ -1,0 +1,173 @@
+body{
+    background-image: url(images/background-img2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    font-family:'Quicksand', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+#container{
+    margin: 5rem;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    padding: 5px 12px;
+    width: 30rem;
+    backdrop-filter: blur(10px);
+    transition: transform 400ms ease, background-color 0.7s cubic-bezier(.4,2,.6,1);
+    position: relative;
+    overflow: hidden;
+}
+#container:hover{
+    transform: scale(1.03);
+}
+#container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: inherit; /* changed from background-image: inherit; */
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px) brightness(0.7);
+    transition: background-image 0.7s cubic-bezier(.4,2,.6,1);
+    pointer-events: none;
+}
+
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+.animate-bg {
+  animation: pop 1s;
+}
+h1{
+    color: hsla(300, 100%, 25%, 1);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    z-index: 2;
+}
+p{
+    color: hsl(0, 0%, 0%);
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+#tweetBtn, #quoteButton{
+    background-color: hsla(300, 100%, 25%, 1);
+    color: #fff;
+    font-weight: bold;
+    font-family:'Quicksand', Arial, sans-serif;
+    font-size: large;
+    width: 10rem;
+    border: none;
+    padding: 10px 10px;
+    margin-bottom: 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(255,179,198,0.15);
+    
+}
+#quoteButton:hover, #tweetBtn:hover{
+    background-color: hsla(300, 100%, 25%, 0.5);
+}
+#quoteButton:active, #tweetBtn:active{
+    background-color: hsla(300, 100%, 25%, 0.8);
+}
+#tweetBtn {
+  display: none;
+}
+.btnContainer {
+    display: flex;
+    gap: 5rem;                 
+    margin-top: 1.5rem; 
+    position: relative;
+    z-index: 2;
+}
+.loader {
+  border: 6px solid hsl(0, 0%, 95%);
+  border-top: 6px solid hsla(300, 100%, 25%, 1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+#quote-container {
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 24px rgba(255,179,198,0.08);
+    position: relative;
+    z-index: 1;
+    min-width: 20rem;   
+    width: 100%;        
+    max-width: 26rem;   
+}
+#author-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 3px solid hsla(300, 100%, 25%, 1);
+    object-fit: cover;
+}
+.author-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    
+}
+.share-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1rem;
+    position: relative;
+    z-index: 3;
+
+}
+.share-icons a img {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.2rem;
+    transition: transform 0.2s;
+    vertical-align: middle;
+}
+.share-icons a img:hover {
+    transform: scale(1.15);
+}
+.like-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #ff7eb9;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    margin-right: 0.5rem;
+}
+.like-btn.liked {
+    color: #e63946;
+    transform: scale(1.2);
+}

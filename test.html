@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function getKeywordsFromAI(quote) {
+            const response = await fetch("http://localhost:3000/openai", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                messages: [
+                    { role: "user", content: `Extract keywords from this quote: ${quote}` }
+                ],
+                }),
+            });
+            const data = await response.json();
+            console.log(data);
+        }
+
+        getKeywordsFromAI("Be yourself; everyone else is already taken.");
+
+
+    </script>
+</body>
+</html>
