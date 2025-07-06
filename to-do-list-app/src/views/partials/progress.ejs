@@ -1,0 +1,26 @@
+<div class="progress-tracker">
+  <h2>Progress Tracker</h2>
+  <div class="progress-bar">
+    <div class="progress" style="width: <%= (completedTasks / totalTasks) * 100 %>%;">
+      <span><%= completedTasks %> of <%= totalTasks %> tasks completed</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .progress-bar {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    margin: 10px 0;
+  }
+
+  .progress {
+    background-color: #4caf50;
+    height: 100%;
+    text-align: center;
+    color: white;
+    line-height: 20px; /* Center text vertically */
+  }
+</style>

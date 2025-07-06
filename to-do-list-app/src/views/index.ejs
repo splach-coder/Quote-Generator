@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <div class="container">
+    <form method="GET" action="/" class="search-form">
+      <input type="text" name="search" class="search-bar" placeholder="Search tasks..." value="<%= search %>">
+      <button type="submit" class="search-btn">
+        <img src="/images/search-icon.png" class="icon-img">
+      </button>
+    </form>
+    <form method="POST" action="/tasks" class="add-form">
+      <label for="dueDate"><strong>Choose a date : </strong> </label>
+      <input type="date" name="dueDate" id="dueDate" required>
+      <div class="add-container">
+        <input type="text" name="title" class="add-task" placeholder="Add a new task..." required>
+        <button type="submit" class="add-btn">
+          <img src="/images/plus-icon.png" class="icon-img">
+        </button>
+      </div>
+      
+    </form>
+    <div class="progress">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: <%= totalCount ? (completedCount / totalCount * 100) : 0 %>%;">
+          <%= totalCount ? Math.round(completedCount / totalCount * 100) : 0 %>% Complete
+        </div>
+      </div>
+    </div>
+    <div class="cards-container">
+      <% Object.keys(groupedTasks).forEach(date => { 
+          const group = groupedTasks[date];
+          const percent = group.total ? Math.round((group.completed / group.total) * 100) : 0;
+      %>
+        <div class="day-card">
+          <div class="card-header">
+            <strong>
+              <%= date === 'No Date' ? 'No Date' : new Date(date).toLocaleDateString() %>
+            </strong>
+          </div>
+          <div class="progress-bar" style="margin-bottom:10px;">
+            <div class="progress-fill" style="width: <%= percent %>%;">
+              <%= percent %>% Complete
+            </div>
+          </div>
+          <ul>
+            <% if (group && group.tasks) { group.tasks.forEach(task => { %>
+              <li class="task <%= task.completed ? 'completed' : '' %>">
+                <span><%= task.title %></span>
+                <form method="POST" action="/tasks/<%= task._id %>?_method=PUT" style="display:inline;">
+                  <button type="submit" class="complete-btn"><%= task.completed ? '✅' : '⬜' %></button>
+                </form>
+                <form method="POST" action="/tasks/<%= task._id %>?_method=DELETE" style="display:inline;">
+                  <button type="submit" class="delete-btn">🗑️</button>
+                </form>
+              </li>
+            <% }) } %>
+          </ul>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  
+</body>
+</html>
